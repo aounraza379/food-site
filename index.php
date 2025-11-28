@@ -1,192 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Foodie's Paradise</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Header -->
+<?php include 'includes/header.php'; ?>
 
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
+<!-- Navbar -->
+<?php include 'includes/navbar.php'; ?>
 
-    @layer utilities {
-      @keyframes fadeIn {
-        0% { opacity: 0; transform: translateY(20px); }
-        100% { opacity: 1; transform: translateY(0); }
-      }
-      .animate-fadeIn { animation: fadeIn 0.9s ease-in-out forwards; }
-    }
-
-    .perspective { perspective: 1500px; }
-    .preserve-3d { transform-style: preserve-3d; }
-    .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-    .will-change-transform { will-change: transform; }
-
-    .slider-item { transform-origin: center center; }
-
-    #slider {
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    .no-select { -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
-  </style>
-</head>
-<body class="bg-gradient-to-br from-white to-amber-300 overflow-x-hidden">
-
-  <!-- Navbar -->
-  <?php include 'includes/navbar.php'; ?>
-
-  <!-- Hero Section -->
-  <header class="pt-28 px-6 md:px-16 max-w-6xl mx-auto animate-fadeIn">
+<!-- Hero Section -->
+<header class="pt-28 px-6 md:px-16 max-w-6xl mx-auto animate-fadeIn">
     <h2 class="text-4xl md:text-6xl font-semibold text-gray-800">
-      Look like an <span class="text-amber-500 italic">expert</span><br/> right from the start
+        Look like an <span class="text-amber-500 italic">expert</span><br/> right from the start
     </h2>
     <p class="mt-4 text-lg text-gray-600">Head start your stylish food website with a gorgeous template.</p>
 
     <div class="mt-6 flex gap-4">
-      <a href="menu.html" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md transform transition hover:scale-105">Order Now!</a>
-      <a href="about.html" class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-md transform transition hover:scale-105">Why Us?</a>
+        <a 
+        href="menu.php" 
+        class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md transform transition hover:scale-105">
+        Order Now!
+        </a>
+        <a 
+        href="about.php" 
+        class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-md transform transition hover:scale-105">
+        Why Us?
+        </a>
     </div>
 
     <div class="relative mt-16 h-[550px] hidden md:block">
-      <img src="assets/images/gridone.avif" class="absolute top-0 left-[5%] w-[250px] rounded-lg shadow-lg -rotate-6 hover:scale-110 transition-transform duration-300" alt="">
-      <img src="assets/images/gridtwo.avif" class="absolute top-[50px] left-[25%] w-[250px] rounded-lg shadow-lg rotate-3 hover:scale-110 transition-transform duration-300" alt="">
-      <img src="assets/images/gridthree.avif" class="absolute top-[100px] left-[45%] w-[250px] rounded-lg shadow-lg -rotate-4 hover:scale-110 transition-transform duration-300" alt="">
-      <img src="assets/images/gridfour.avif" class="absolute top-[150px] left-[65%] w-[250px] rounded-lg shadow-lg rotate-6 hover:scale-110 transition-transform duration-300" alt="">
-      <img src="assets/images/gridfive.avif" class="absolute top-[200px] left-[85%] w-[250px] rounded-lg shadow-lg -rotate-3 hover:scale-110 transition-transform duration-300" alt="">
+        <img src="assets/images/gridone.avif" class="absolute top-0 left-[5%] w-[250px] rounded-lg shadow-lg -rotate-6 hover:scale-110 transition-transform duration-300" alt="">
+        <img src="assets/images/gridtwo.avif" class="absolute top-[50px] left-[25%] w-[250px] rounded-lg shadow-lg rotate-3 hover:scale-110 transition-transform duration-300" alt="">
+        <img src="assets/images/gridthree.avif" class="absolute top-[100px] left-[45%] w-[250px] rounded-lg shadow-lg -rotate-4 hover:scale-110 transition-transform duration-300" alt="">
+        <img src="assets/images/gridfour.avif" class="absolute top-[150px] left-[65%] w-[250px] rounded-lg shadow-lg rotate-6 hover:scale-110 transition-transform duration-300" alt="">
+        <img src="assets/images/gridfive.avif" class="absolute top-[200px] left-[85%] w-[250px] rounded-lg shadow-lg -rotate-3 hover:scale-110 transition-transform duration-300" alt="">
     </div>
-  </header>
+</header>
 
-  <div class="bg-orange-500 text-white text-center py-3 mt-12 animate-fadeIn">
+<!-- Special Offer Banner -->
+<div class="bg-orange-500 text-white text-center py-3 mt-12 animate-fadeIn">
     Special Offer: Get 20% off your first order! Use code: <strong>FOOD20</strong>
-  </div>
+</div>
 
-  <main class="mt-24 mb-24">
+<!-- 3D Slider Section -->
+<main class="mt-24 mb-24">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="relative w-full h-[420px] overflow-hidden perspective">
-        <div id="slider" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex justify-center items-center preserve-3d">
-          <!-- Slider items class for JS selection) -->
-          <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
-               style="background-image: url('assets/images/sliderone.avif');">
-            <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
-              <h3 class="text-lg font-semibold">Avocado Toast</h3>
-              <p class="text-sm">Fresh avocado on whole grain toast</p>
-              <div class="absolute top-2 left-2 bg-red-500 px-3 py-1 text-xs font-bold rounded-md">Light Night Deal</div>
-            </div>
-          </div>
+        <div class="relative w-full h-[420px] overflow-hidden perspective">
+            <div id="slider" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex justify-center items-center preserve-3d">
+                
+                <!-- Slider items -->
+                <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
+                     style="background-image: url('assets/images/sliderone.avif');">
+                    <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
+                        <h3 class="text-lg font-semibold">Avocado Toast</h3>
+                        <p class="text-sm">Fresh avocado on whole grain toast</p>
+                        <div class="absolute top-2 left-2 bg-red-500 px-3 py-1 text-xs font-bold rounded-md">Light Night Deal</div>
+                    </div>
+                </div>
 
-          <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
-               style="background-image: url('assets/images/slidertwo.avif');">
-            <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
-              <h3 class="text-lg font-semibold">Berry Chia Pudding</h3>
-              <p class="text-sm">Chia seeds, almond milk, topped with mixed berries</p>
-              <div class="absolute top-2 left-2 bg-orange-500 px-3 py-1 text-xs font-bold rounded-md">Meal Deal</div>
-            </div>
-          </div>
+                <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
+                     style="background-image: url('assets/images/slidertwo.avif');">
+                    <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
+                        <h3 class="text-lg font-semibold">Berry Chia Pudding</h3>
+                        <p class="text-sm">Chia seeds, almond milk, topped with mixed berries</p>
+                        <div class="absolute top-2 left-2 bg-orange-500 px-3 py-1 text-xs font-bold rounded-md">Meal Deal</div>
+                    </div>
+                </div>
 
-          <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
-               style="background-image: url('assets/images/sliderthree.avif');">
-            <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
-              <h3 class="text-lg font-semibold">Quinoa Veggie Bowl</h3>
-              <p class="text-sm">Quinoa, chickpeas, avocado, roasted veggies</p>
-              <div class="absolute top-2 left-2 bg-red-500 px-3 py-1 text-xs font-bold rounded-md">Light Night Deal</div>
-            </div>
-          </div>
+                <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
+                     style="background-image: url('assets/images/sliderthree.avif');">
+                    <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
+                        <h3 class="text-lg font-semibold">Quinoa Veggie Bowl</h3>
+                        <p class="text-sm">Quinoa, chickpeas, avocado, roasted veggies</p>
+                        <div class="absolute top-2 left-2 bg-red-500 px-3 py-1 text-xs font-bold rounded-md">Light Night Deal</div>
+                    </div>
+                </div>
 
-          <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
-               style="background-image: url('assets/images/sliderfour.avif');">
-            <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
-              <h3 class="text-lg font-semibold">Grilled Chicken Salad</h3>
-              <p class="text-sm">Mixed greens, grilled chicken, lemon vinaigrette</p>
-              <div class="absolute top-2 left-2 bg-orange-500 px-3 py-1 text-xs font-bold rounded-md">Meal Deal</div>
-            </div>
-          </div>
+                <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
+                     style="background-image: url('assets/images/sliderfour.avif');">
+                    <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
+                        <h3 class="text-lg font-semibold">Grilled Chicken Salad</h3>
+                        <p class="text-sm">Mixed greens, grilled chicken, lemon vinaigrette</p>
+                        <div class="absolute top-2 left-2 bg-orange-500 px-3 py-1 text-xs font-bold rounded-md">Meal Deal</div>
+                    </div>
+                </div>
 
-          <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
-               style="background-image: url('assets/images/sliderfive.avif');">
-            <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
-              <h3 class="text-lg font-semibold">Green Detox Juice</h3>
-              <p class="text-sm">Kale, cucumber, lemon, green apple</p>
-              <div class="absolute top-2 left-2 bg-red-500 px-3 py-1 text-xs font-bold rounded-md">Light Night Deal</div>
+                <div class="slider-item absolute w-[200px] h-[300px] bg-cover bg-center rounded-lg flex justify-center items-end text-white opacity-95 shadow-lg backface-hidden will-change-transform"
+                     style="background-image: url('assets/images/sliderfive.avif');">
+                    <div class="w-full bg-black/50 p-3 rounded-b-lg text-center">
+                        <h3 class="text-lg font-semibold">Green Detox Juice</h3>
+                        <p class="text-sm">Kale, cucumber, lemon, green apple</p>
+                        <div class="absolute top-2 left-2 bg-red-500 px-3 py-1 text-xs font-bold rounded-md">Light Night Deal</div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </main>
+</main>
 
-  <!-- Footer -->
-  <?php include 'includes/footer.php'; ?>
+<!-- Footer -->
+<?php include 'includes/footer.php'; ?>
 
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn && menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+<script src='/assets/js/main.js'></script>
 
-    (function () {
-      const items = Array.from(document.querySelectorAll('#slider .slider-item'));
-      if (!items.length) return;
-
-      let angle = 0;
-      const total = items.length;
-
-      function getTranslateZ() {
-        const w = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0);
-        if (w >= 1400) return 420;
-        if (w >= 1024) return 360;
-        if (w >= 768) return 300;
-        if (w >= 480) return 220;
-        return 160; // small phones
-      }
-
-      // place items around the Y-axis circle once (initial)
-      function placeItems(initialAngle = 0) {
-        const radius = getTranslateZ();
-        items.forEach((item, i) => {
-          const itemAngle = (360 / total) * i + initialAngle;
-          // apply rotation + push outward on z axis
-          item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px)`;
-        });
-      }
-
-      // rotation function updates each frame
-      function rotateSlider() {
-        const radius = getTranslateZ();
-        items.forEach((item, index) => {
-          const itemAngle = (360 / total) * index;
-          item.style.transform = `rotateY(${itemAngle + angle}deg) translateZ(${radius}px)`;
-        });
-      }
-
-      // animate
-      function animate() {
-        angle += 0.25;
-        if (angle >= 360) angle -= 360;
-        rotateSlider();
-        requestAnimationFrame(animate);
-      }
-
-      // initialize positions and start animation
-      placeItems(0);
-      window.addEventListener('load', () => {
-        placeItems(0);
-        requestAnimationFrame(animate);
-      });
-
-      let resizeTimeout;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          placeItems(angle);
-        }, 120);
-      });
-
-    })();
-  </script>
 </body>
 </html>

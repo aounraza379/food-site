@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menu - Foodie's Paradise</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
 <style>
     body {
         font-family: "Poppins", sans-serif;
@@ -25,9 +17,13 @@
         animation: fadeInUp 1s ease-in-out forwards;
     }
 </style>
+
 </head>
 <body class="overflow-x-hidden">
-    
+
+    <!-- Header -->
+    <?php include __DIR__ . '/../includes/header.php'; ?>
+
     <!-- Navbar -->
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
 
@@ -109,20 +105,8 @@
     <!-- Footer -->
     <?php include __DIR__ . '/../includes/footer.php'; ?>
 
-<script>
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
-    function openLightbox(src) {
-        const lb = document.getElementById("lightbox");
-        const lbImg = document.getElementById("lightbox-image");
-        lbImg.src = src;
-        lb.classList.remove("hidden");
-    }
-    function closeLightbox() {
-        document.getElementById("lightbox").classList.add("hidden");
-    }
-</script>
+    <!-- Script -->
+    <script src='/assets/js/main.js'></script>
 
 </body>
 </html>
