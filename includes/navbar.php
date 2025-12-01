@@ -1,12 +1,10 @@
 <nav class="bg-gradient-to-r from-gray-800 to-gray-900 text-white fixed w-full z-50 shadow">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
-    <!-- LEFT: LOGO -->
     <div class="flex items-center">
       <h1 class="text-2xl font-bold text-amber-400">Foodie's Paradise</h1>
     </div>
 
-    <!-- RIGHT SIDE (nav links + cart + menu button) -->
     <div class="flex items-center gap-6">
 
       <!-- Desktop Menu -->

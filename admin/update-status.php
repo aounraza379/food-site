@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 // Only allow logged-in admins
 if (!isset($_SESSION['admin_logged_in'])) {
     header("Location: login.php");
