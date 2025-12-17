@@ -15,11 +15,11 @@ $conn->query("DELETE FROM food_items WHERE id=".(int)$_GET['delete']);
 $foods = $conn->query("SELECT * FROM food_items");
 ?>
 
-<?php include "../includes/header.php"; ?>
-<?php include "../includes/navbar.php"; ?>
+<?php include "partials/header.php"; ?>
+<?php include "partials/sidebar.php"; ?>
 
-<div class="max-w-6xl mx-auto px-6 py-28">
-    <h1 class="text-2xl font-bold mb-6">Food Menu</h1>
+<div class="pt-10 px-6 md:px-12">
+    <h1 class="text-3xl font-bold mb-6">Food Menu</h1>
 
     <form method="POST" class="flex gap-4 mb-6">
         <input name="name" required placeholder="Food Name" class="border p-2">
@@ -45,4 +45,4 @@ $foods = $conn->query("SELECT * FROM food_items");
     </table>
 </div>
 
-<?php include "../includes/footer.php"; ?>
+<?php include "partials/footer.php"; ?>

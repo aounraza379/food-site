@@ -24,8 +24,8 @@ $order = $order_res->fetch_assoc();
 $items = $conn->query("SELECT * FROM order_items WHERE order_id = $order_id");
 ?>
 
-<?php include '../includes/header.php'; ?>
-<?php include '../includes/navbar.php'; ?>
+<?php include "partials/header.php"; ?>
+<?php include "partials/sidebar.php"; ?>
 
 <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-xl p-8 mt-20 mb-10">
 
@@ -112,4 +112,4 @@ $items = $conn->query("SELECT * FROM order_items WHERE order_id = $order_id");
 
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include "partials/footer.php"; ?>

@@ -11,19 +11,20 @@ header("Location: users.php"); exit;
 $users = $conn->query("SELECT * FROM users ORDER BY created_at DESC");
 ?>
 
-<?php include "../includes/header.php"; ?>
-<?php include "../includes/navbar.php"; ?>
+<?php include "partials/header.php"; ?>
+<?php include "partials/sidebar.php"; ?>
 
 
-<div class="max-w-6xl mx-auto px-6 py-28">
+<div class="max-w-6xl mx-auto px-6">
     <div>
         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 max-w-6xl mx-auto my-6" role="alert">
             <p class="font-bold">Caution:</p>
             <p>Deleting a user is irreversible. Please ensure you have backed up any necessary data before proceeding with deletion.</p>
         </div>
     </div>
-    <div class="max-w-6xl">
-        <h1 class="text-2xl font-bold mb-6">Users</h1>
+
+    <div class="pt-10 px-6 md:px-12">
+    <h1 class="text-3xl font-bold mb-6">Users</h1>
 
         <table class="w-full bg-white shadow rounded">
             <tr class="bg-gray-100">
@@ -48,4 +49,4 @@ $users = $conn->query("SELECT * FROM users ORDER BY created_at DESC");
     </div>
 </div>
 
-<?php include "../includes/footer.php"; ?>
+<?php include "partials/footer.php"; ?>

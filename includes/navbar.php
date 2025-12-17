@@ -69,8 +69,8 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 
           <!-- Dropdown -->
           <div id="user-menu" class="hidden absolute right-0 mt-3 w-48 bg-white text-gray-800 rounded shadow-lg py-2">
-            <a href="/pages/profile.php" class="block px-4 py-2 hover:bg-gray-100">My Profile</a>
-            <a href="/pages/my-orders.php" class="block px-4 py-2 hover:bg-gray-100">My Orders</a>
+            <a href="/user/profile.php" class="block px-4 py-2 hover:bg-gray-100">My Profile</a>
+            <a href="/user/my-orders.php" class="block px-4 py-2 hover:bg-gray-100">My Orders</a>
             <?php if (($u['role'] ?? '') === 'admin'): ?>
               <a href="/admin/index.php" class="block px-4 py-2 hover:bg-gray-100">Admin Panel</a>
             <?php endif; ?>

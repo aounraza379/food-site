@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2025 at 01:26 PM
+-- Generation Time: Dec 17, 2025 at 10:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -126,7 +126,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `user_name`, `user_email`, `user_phone`, `user_address`, `user_city`, `user_notes`, `total_price`, `created_at`, `status`) VALUES
-(1, 3, 'kykaxu', 'vocutoperu@mailinator.com', '+1 (946) 738-8002', 'Rem sint est ex dolo', '', '', 16.99, '2025-12-14 16:41:53', 'pending');
+(1, 3, 'kykaxu', 'vocutoperu@mailinator.com', '+1 (946) 738-8002', 'Rem sint est ex dolo', '', '', 16.99, '2025-12-14 16:41:53', 'pending'),
+(2, 5, 'bawarah', 'bawarah160@naqulu.com', '+1 (326) 619-9385', 'Ullamco est error qu', '', '', 12.99, '2025-12-17 21:07:03', 'pending');
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,8 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `food_id`, `food_name`, `quantity`, `price`) VALUES
-(1, 1, 8, 'Grilled Chicken with Fries', 1, 16.99);
+(1, 1, 8, 'Grilled Chicken with Fries', 1, 16.99),
+(2, 2, 6, 'Beef with Fries', 1, 12.99);
 
 -- --------------------------------------------------------
 
@@ -183,7 +185,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `email_verif
 (2, 'admin', 'aounmohsin1009@gmail.com', '$2y$10$Qam/cixPAZ39iECh1veuL.jMqEsV0ERS.3WifA1mIUqbYv3r3l2Hm', 'admin', 1, NULL, NULL, NULL, 0, NULL, '2025-12-10 09:33:02', NULL, 'ddd002ca2ad4b55b9742959fe3df809345de2853d5e6447e0f0e5b87c2155933', '2025-12-16 13:54:38'),
 (3, 'user', 'canocax720@naqulu.com', '$2y$10$ss2C234d3zK/Ef8jURHkxONYk53Jr1WFx0RKX4AFQah2QNNHs5rA.', 'user', 1, NULL, NULL, NULL, 0, NULL, '2025-12-14 16:27:59', NULL, NULL, NULL),
 (4, 'newuser', 'hodira8404@roastic.com', '$2y$10$3Bncm.C8ufViCF9WqeLbnOTWUrCb6Bx1VmB1t/FQdqcPjYtOnvYEe', 'user', 1, NULL, NULL, NULL, 0, NULL, '2025-12-16 06:10:58', NULL, '1a979ae0942ebc6f0888f2432b4cbc94e7d3033de7a6de94bc3e4f0989350132', '2025-12-16 13:52:30'),
-(5, 'bawarah', 'bawarah160@naqulu.com', '$2y$10$1CPiQ/k8jMwQZielYb6QT.BFZw01O8sOi8WYpnelRZfJHlYvnTglS', 'user', 1, NULL, NULL, NULL, 0, NULL, '2025-12-16 11:57:06', NULL, '998046ed63ae75b73f023a261fbdc7d082d433ed931c82e90da6e6e7965ad70f', '2025-12-16 14:22:08');
+(5, 'bawarah', 'bawarah160@naqulu.com', '$2y$10$tiH4SxbPqpFcN1H1LI.EM.lj76vn5IelfOk0HNy33f83D1h7fpd3C', 'user', 1, NULL, NULL, NULL, 0, NULL, '2025-12-16 11:57:06', NULL, '998046ed63ae75b73f023a261fbdc7d082d433ed931c82e90da6e6e7965ad70f', '2025-12-16 14:22:08');
 
 --
 -- Indexes for dumped tables
@@ -255,13 +257,13 @@ ALTER TABLE `food_items`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -25,13 +25,13 @@ $foodStmt->execute();
 $foodCount = $foodStmt->get_result()->fetch_assoc()['total_food'];
 ?>
 
+
 <!-- Header -->
-<?php include '../includes/header.php'; ?>
+<?php include "partials/header.php"; ?>
+<?php include "partials/sidebar.php"; ?>
 
-<!-- Navbar -->
-<?php include '../includes/navbar.php'; ?>
 
-<div class="pt-20 px-6 md:px-12">
+<div class="pt-10 px-6 md:px-12">
     <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
 
     <!-- Metrics Cards -->
