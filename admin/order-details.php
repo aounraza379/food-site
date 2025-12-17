@@ -53,6 +53,14 @@ $items = $conn->query("SELECT * FROM order_items WHERE order_id = $order_id");
             $status_class = $status_colors[$order['status']] ?? 'bg-gray-500';
         ?>
         <span class="px-3 py-1 rounded-full text-white"><?= $status_text ?></span>
+        <p><strong>Phone:</strong> <?= htmlspecialchars($order['user_phone']) ?></p>
+        <p><strong>Address:</strong> <?= htmlspecialchars($order['user_address']) ?></p>
+        <p><strong>City:</strong> <?= htmlspecialchars($order['user_city']) ?></p>
+
+        <?php if (!empty($order['user_notes'])): ?>
+        <p><strong>Notes:</strong> <?= htmlspecialchars($order['user_notes']) ?></p>
+        <?php endif; ?>
+        
     </p>
 
     <h3 class="text-xl font-semibold mt-6 mb-3">Items</h3>

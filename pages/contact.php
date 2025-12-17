@@ -14,11 +14,24 @@ unset($_SESSION['success'], $_SESSION['error']);
 <?php include __DIR__ . '/../includes/navbar.php'; ?>
 
 <!-- Contact Section -->
-<section class="pt-28 pb-24 px-6 md:px-0 fade-in">
+<section class="pt-20 pb-24 px-6 md:px-0 fade-in">
     <div class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg mt-16">
         
         <h1 class="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-6">Get In Touch</h1>
         <hr class="border-t-2 border-amber-400 w-24 mx-auto mb-8" />
+
+        <br>
+        <?php if($success_msg): ?>
+            <div class="mb-4 p-4 text-green-800 bg-green-200 rounded-lg">
+                <?= $success_msg; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if($error_msg): ?>
+            <div class="mb-4 p-4 text-red-800 bg-red-200 rounded-lg">
+                <?= $error_msg; ?>
+            </div>
+        <?php endif; ?>
 
         <form action="../process/contactprocess.php" method="post" class="space-y-6">
             <div>
@@ -47,18 +60,6 @@ unset($_SESSION['success'], $_SESSION['error']);
                 Send Message
             </button>
         </form>
-        <br>
-        <?php if($success_msg): ?>
-            <div class="mb-4 p-4 text-green-800 bg-green-200 rounded-lg">
-                <?= $success_msg; ?>
-            </div>
-        <?php endif; ?>
-
-        <?php if($error_msg): ?>
-            <div class="mb-4 p-4 text-red-800 bg-red-200 rounded-lg">
-                <?= $error_msg; ?>
-            </div>
-        <?php endif; ?>
 
             </div>
         </section>

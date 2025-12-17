@@ -14,12 +14,12 @@
 
     <div class="mt-6 flex gap-4">
         <a 
-        href="menu.php" 
+        href="pages/menu.php" 
         class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-md transform transition hover:scale-105">
         Order Now!
         </a>
         <a 
-        href="about.php" 
+        href="pages/about.php" 
         class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-md transform transition hover:scale-105">
         Why Us?
         </a>

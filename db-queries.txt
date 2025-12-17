@@ -1,6 +1,292 @@
-CREATE TABLE admin_users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(100) NOT NULL,
-    password VARCHAR(255) NOT NULL
-);
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 16, 2025 at 01:26 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `foodparadise`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_users`
+--
+
+CREATE TABLE `admin_users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin_users`
+--
+
+INSERT INTO `admin_users` (`id`, `username`, `password`) VALUES
+(1, 'admin', '$2b$12$MzAMslXcp5BX4/kfn.r5k.dwBKzlNRL7ESy1QuZ4fMXQhiwHgZutW');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `created_at`) VALUES
+(1, 'ADMIN', 'hehe@gmail.com', 'im testing contact maiil', '2025-12-14 09:23:44'),
+(2, 'Hope Lara', 'kafub@mailinator.com', 'Velit sunt labore ', '2025-12-14 09:26:40'),
+(3, 'Louis Roach', 'fomuvasix@mailinator.com', 'Et in eum libero do ', '2025-12-14 09:29:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food_items`
+--
+
+CREATE TABLE `food_items` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `is_special` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `food_items`
+--
+
+INSERT INTO `food_items` (`id`, `name`, `description`, `price`, `image`, `is_special`) VALUES
+(1, 'Avocado Toast', 'Fresh avocado on whole grain toast', 8.99, 'sliderone.avif', 0),
+(2, 'Berry Chia Pudding', 'Chia seeds, almond milk, topped with mixed berries', 6.49, 'slidertwo.avif', 0),
+(3, 'Quinoa Veggie Bowl', 'Quinoa, chickpeas, avocado, roasted veggies', 10.99, 'sliderthree.avif', 0),
+(4, 'Grilled Chicken Salad', 'Mixed greens, grilled chicken, lemon vinaigrette', 12.49, 'sliderfour.avif', 0),
+(5, 'Green Detox Juice', 'Kale, cucumber, lemon, green apple', 5.99, 'sliderfive.avif', 0),
+(6, 'Beef with Fries', 'Healthy combo meal served with fries', 12.99, 'menuone.avif', 1),
+(7, 'Burger and Fries', 'Juicy burger served with crispy fries', 14.49, 'menutwo.avif', 1),
+(8, 'Grilled Chicken with Fries', 'Grilled chicken with fries and salad', 16.99, 'menuthree.avif', 1),
+(9, 'Classic Cheeseburger', 'Juicy beef cheeseburger with lettuce and tomato', 9.99, 'itemone.avif', 0),
+(10, 'Margherita Pizza', 'Classic margherita pizza with fresh basil', 12.99, 'itemtwo.avif', 0),
+(11, 'Creamy Alfredo Pasta', 'Pasta tossed in creamy Alfredo sauce', 11.49, 'itemthree.avif', 0),
+(12, 'Garden Fresh Salad', 'Mixed greens with seasonal vegetables', 7.99, 'itemfour.avif', 0),
+(13, 'Sunrise Pancake Stack', 'Fluffy pancakes with maple syrup and butter', 7.49, 'gridone.avif', 0),
+(14, 'Tropical Fruit Plate', 'Seasonal tropical fruits arranged fresh', 6.99, 'gridtwo.avif', 0),
+(15, 'Spicy Chicken Wrap', 'Grilled spicy chicken wrapped with fresh veggies', 8.99, 'gridthree.avif', 0),
+(16, 'Honey Yogurt Parfait', 'Greek yogurt with honey and granola', 5.49, 'gridfour.avif', 0),
+(17, 'Sourdough Avocado Delight', 'Sourdough toast topped with smashed avocado & chili', 9.25, 'gridfive.avif', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `user_phone` varchar(50) DEFAULT NULL,
+  `user_address` varchar(255) DEFAULT NULL,
+  `user_city` varchar(100) DEFAULT NULL,
+  `user_notes` text DEFAULT NULL,
+  `total_price` decimal(10,2) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(20) NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `user_name`, `user_email`, `user_phone`, `user_address`, `user_city`, `user_notes`, `total_price`, `created_at`, `status`) VALUES
+(1, 3, 'kykaxu', 'vocutoperu@mailinator.com', '+1 (946) 738-8002', 'Rem sint est ex dolo', '', '', 16.99, '2025-12-14 16:41:53', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `food_id` int(11) NOT NULL,
+  `food_name` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `food_id`, `food_name`, `quantity`, `price`) VALUES
+(1, 1, 8, 'Grilled Chicken with Fries', 1, 16.99);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  `email_verified` tinyint(1) NOT NULL DEFAULT 0,
+  `verification_token` varchar(128) DEFAULT NULL,
+  `remember_token` varchar(128) DEFAULT NULL,
+  `remember_expires` datetime DEFAULT NULL,
+  `failed_attempts` int(11) NOT NULL DEFAULT 0,
+  `lock_until` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `last_login` datetime DEFAULT NULL,
+  `reset_token` varchar(128) DEFAULT NULL,
+  `reset_expires` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `email_verified`, `verification_token`, `remember_token`, `remember_expires`, `failed_attempts`, `lock_until`, `created_at`, `last_login`, `reset_token`, `reset_expires`) VALUES
+(1, 'admin', 'admin@example.com', '$2b$12$MzAMslXcp5BX4/kfn.r5k.dwBKzlNRL7ESy1QuZ4fMXQhiwHgZutW', 'admin', 1, NULL, NULL, NULL, 0, NULL, '2025-12-09 14:18:42', NULL, NULL, NULL),
+(2, 'admin', 'aounmohsin1009@gmail.com', '$2y$10$Qam/cixPAZ39iECh1veuL.jMqEsV0ERS.3WifA1mIUqbYv3r3l2Hm', 'admin', 1, NULL, NULL, NULL, 0, NULL, '2025-12-10 09:33:02', NULL, 'ddd002ca2ad4b55b9742959fe3df809345de2853d5e6447e0f0e5b87c2155933', '2025-12-16 13:54:38'),
+(3, 'user', 'canocax720@naqulu.com', '$2y$10$ss2C234d3zK/Ef8jURHkxONYk53Jr1WFx0RKX4AFQah2QNNHs5rA.', 'user', 1, NULL, NULL, NULL, 0, NULL, '2025-12-14 16:27:59', NULL, NULL, NULL),
+(4, 'newuser', 'hodira8404@roastic.com', '$2y$10$3Bncm.C8ufViCF9WqeLbnOTWUrCb6Bx1VmB1t/FQdqcPjYtOnvYEe', 'user', 1, NULL, NULL, NULL, 0, NULL, '2025-12-16 06:10:58', NULL, '1a979ae0942ebc6f0888f2432b4cbc94e7d3033de7a6de94bc3e4f0989350132', '2025-12-16 13:52:30'),
+(5, 'bawarah', 'bawarah160@naqulu.com', '$2y$10$1CPiQ/k8jMwQZielYb6QT.BFZw01O8sOi8WYpnelRZfJHlYvnTglS', 'user', 1, NULL, NULL, NULL, 0, NULL, '2025-12-16 11:57:06', NULL, '998046ed63ae75b73f023a261fbdc7d082d433ed931c82e90da6e6e7965ad70f', '2025-12-16 14:22:08');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin_users`
+--
+ALTER TABLE `admin_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `food_items`
+--
+ALTER TABLE `food_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_user_id` (`user_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin_users`
+--
+ALTER TABLE `admin_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `food_items`
+--
+ALTER TABLE `food_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`food_id`) REFERENCES `food_items` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

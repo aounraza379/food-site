@@ -105,5 +105,8 @@ include __DIR__ . '/../config/db.php';
     }
 </style>
 
+<!-- Script -->
+<script src='/assets/js/main.js'></script>
+
 </body>
 </html>

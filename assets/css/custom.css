@@ -1,74 +1,50 @@
 /* Custom animations and utilities */
 @keyframes fadeIn {
-    0% { 
-        opacity: 0; 
-        transform: translateY(20px); 
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    100% { 
-        opacity: 1; 
-        transform: translateY(0); 
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-.animate-fadeIn { 
-    animation: fadeIn 0.9s ease-in-out forwards; 
+.animate-fadeIn {
+    animation: fadeIn 0.9s ease-in-out forwards;
 }
 
-.perspective { 
-    perspective: 1500px; 
+.perspective {
+    perspective: 1500px;
 }
 
-.preserve-3d { 
-    transform-style: preserve-3d; 
-}
-
-.backface-hidden { 
-    backface-visibility: hidden; 
-    -webkit-backface-visibility: hidden; 
-}
-
-.will-change-transform { 
-    will-change: transform; 
-}
-
-.slider-item { 
-    transform-origin: center center; 
-}
-
+.preserve-3d,
 #slider {
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+}
+
+.backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.will-change-transform {
     will-change: transform;
 }
 
-.no-select { 
-    -webkit-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
+.slider-item {
+    transform-origin: center center;
 }
 
-/* Custom font for body */
-body { 
-    font-family: 'Poppins', sans-serif; 
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-/* FOR ABOUT.php */
+/* Base font */
 body {
-    font-family: "Poppins", sans-serif;
-}
-@layer utilities {
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    .animate-fadeIn {
-        animation: fadeIn 0.9s ease-in-out forwards;
-    }
+    font-family: 'Poppins', sans-serif;
 }
