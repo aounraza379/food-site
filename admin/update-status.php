@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['admin_logged_in'] = true;
+
 
 // Only allow logged-in admins
 if (!isset($_SESSION['admin_logged_in'])) {

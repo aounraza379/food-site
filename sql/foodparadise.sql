@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2025 at 10:56 PM
+-- Generation Time: Dec 22, 2025 at 05:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -127,7 +127,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `user_name`, `user_email`, `user_phone`, `user_address`, `user_city`, `user_notes`, `total_price`, `created_at`, `status`) VALUES
 (1, 3, 'kykaxu', 'vocutoperu@mailinator.com', '+1 (946) 738-8002', 'Rem sint est ex dolo', '', '', 16.99, '2025-12-14 16:41:53', 'pending'),
-(2, 5, 'bawarah', 'bawarah160@naqulu.com', '+1 (326) 619-9385', 'Ullamco est error qu', '', '', 12.99, '2025-12-17 21:07:03', 'pending');
+(2, 5, 'bawarah', 'bawarah160@naqulu.com', '+1 (326) 619-9385', 'Ullamco est error qu', '', '', 12.99, '2025-12-17 21:07:03', 'pending'),
+(3, 5, 'bawarah', 'bawarah160@naqulu.com', '03266829111', 'Faisalabad', '', '', 54.95, '2025-12-18 05:51:39', 'delivered');
 
 -- --------------------------------------------------------
 
@@ -150,7 +151,8 @@ CREATE TABLE `order_items` (
 
 INSERT INTO `order_items` (`id`, `order_id`, `food_id`, `food_name`, `quantity`, `price`) VALUES
 (1, 1, 8, 'Grilled Chicken with Fries', 1, 16.99),
-(2, 2, 6, 'Beef with Fries', 1, 12.99);
+(2, 2, 6, 'Beef with Fries', 1, 12.99),
+(3, 3, 3, 'Quinoa Veggie Bowl', 5, 10.99);
 
 -- --------------------------------------------------------
 
@@ -251,19 +253,19 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `food_items`
 --
 ALTER TABLE `food_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

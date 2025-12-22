@@ -1,4 +1,4 @@
-foodsite/ 
+foodparadise/ 
 │ 
 ├─ admin/ 
 │   ├─ partials/ 
@@ -56,106 +56,29 @@ foodsite/
 │  ├─ send-reset-link.php
 │  ├─ update-cart.php
 │ 
+├─ sql/
+│   ├─ foodparadise.sql
+│
 ├─ styles/
 │  ├─ input.css 
 │  ├─ output.css
+│
+├─ user/
+│   ├─ auth.php
+│   ├─ index.php
+│   ├─ profile.php
+│   ├─ my-orders.php
+│   ├─ order-details.php
+│   ├─ change-password.php
+│   ├─ logout.php
 │ 
 ├─ vendor/
 │  ├─ composer/
 │  ├─ phpmailer/
 │  ├─ autoload.php
 │
-├─ index.php 
 ├─ composer.json 
 ├─ composer.lock 
+├─ index.php 
 ├─ mail-test.php 
-
-
-
-
-
-
-
-foodsite/
-│
-├─ admin/                        ✅ (already exists, we refine it)
-│   ├─ auth.php                  🆕 admin-only guard
-│   ├─ index.php                 🔁 ADMIN DASHBOARD (main entry)
-│   ├─ login.php                 ✅ (keep)
-│   ├─ logout.php                🔁 unified logout
-│   ├─ orders.php                🔁 improved
-│   ├─ order-details.php         ✅
-│   ├─ update-status.php         ✅
-│   ├─ users.php                 🆕 manage users
-│   ├─ products.php              🆕 manage food items
-│   ├─ add-product.php           🆕
-│   ├─ edit-product.php          🆕
-│   ├─ reports.php               🆕 analytics
-│   ├─ settings.php              🆕 admin settings
-│   ├─ partials/
-│   │   ├─ header.php            🆕 admin header
-│   │   ├─ sidebar.php           🆕 admin sidebar
-│   │   └─ footer.php            🆕
-│
-├─ user/                         🆕 (NEW – separate dashboard)
-│   ├─ auth.php                  🆕 user guard
-│   ├─ index.php                 🆕 USER DASHBOARD
-│   ├─ profile.php               🆕
-│   ├─ my-orders.php             🆕
-│   ├─ order-details.php         🆕
-│   ├─ change-password.php       🆕
-│   ├─ logout.php                🔁 redirects to main logout
-│
-├─ assets/
-│   ├─ css/custom.css             ✅
-│   ├─ js/main.js                 🔁 add dashboard JS later
-│   ├─ images/                    ✅
-│
-├─ config/
-│   ├─ constant.php               🔁 spelling fix (important)
-│   ├─ db.php                     ✅
-│   ├─ mail.php                   🔁 SMTP centralized
-│
-├─ includes/                      🔁 PUBLIC SITE only
-│   ├─ header.php
-│   ├─ navbar.php
-│   ├─ footer.php
-│
-├─ pages/                         ✅ PUBLIC PAGES ONLY
-│   ├─ about.php
-│   ├─ cart.php
-│   ├─ checkout.php
-│   ├─ contact.php
-│   ├─ forgot-password.php
-│   ├─ login.php
-│   ├─ logout.php
-│   ├─ menu.php
-│   ├─ order-confirmation.php
-│   ├─ privacy_policy.php
-│   ├─ register.php
-│   ├─ reset-password.php
-│   ├─ verify.php
-│
-├─ process/                       🔁 ALL FORM LOGIC
-│   ├─ add-to-cart.php
-│   ├─ contactprocess.php
-│   ├─ place-order.php
-│   ├─ reset-password-process.php
-│   ├─ send-reset-link.php
-│   ├─ update-cart.php
-│   ├─ admin/
-│   │   ├─ product-save.php       🆕
-│   │   ├─ product-delete.php     🆕
-│   │   ├─ user-update.php        🆕
-│
-├─ styles/
-│   ├─ input.css
-│   ├─ output.css
-│
-├─ vendor/
-│   ├─ autoload.php
-│   ├─ phpmailer/
-│
-├─ index.php                      ✅ homepage
-├─ composer.json
-├─ composer.lock
+├─ structure.txt

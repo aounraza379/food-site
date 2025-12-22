@@ -10,7 +10,11 @@ include "partials/sidebar.php";
     <h1 class="text-3xl font-bold mb-6">Orders</h1>
     <table class="w-full bg-white shadow rounded">
         <tr class="border-b font-semibold">
-            <td class="p-3">ID</td><td>User</td><td>Total</td><td>Status</td><td>Action</td>
+            <td class="p-3">ID</td>
+            <td>User</td>
+            <td>Total</td>
+            <td>Status</td>
+            <td>Action</td>
         </tr>
         <?php while($o=$orders->fetch_assoc()): ?>
         <tr class="border-b">

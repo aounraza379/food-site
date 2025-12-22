@@ -53,9 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <!-- Header -->
 <?php include '../includes/header.php'; ?>
+<?php include '../includes/navbar.php'; ?>
 
 <div class="flex items-center justify-center h-screen">
-  <div class="flex flex-col max-w-md p-8 rounded-xl shadow-xl">
+  <div class="flex flex-col max-w-md p-8 rounded-xl shadow-xl bg-white">
     <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Admin Login</h2>
 
     <?php if ($error): ?>
