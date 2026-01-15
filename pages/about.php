@@ -5,7 +5,7 @@
 <?php include __DIR__ . '/../includes/navbar.php'; ?>
 
 <!-- About Section -->
-<section class="pt-28 pb-24 px-6 fade-in">
+<section class="pt-28 pb-24 px-6">
     <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-4xl md:text-5xl font-semibold text-amber-500 mb-4">About Us</h1>
         <hr class="border-t-2 border-amber-400 w-24 mx-auto mb-8" />
@@ -13,7 +13,7 @@
             Welcome to our restaurant! We are passionate about delivering the best culinary experience. Our team is committed to bringing you delicious food made with the finest ingredients, in a warm and welcoming environment.
         </p>
     </div>
-    <div class="mt-16 grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    <div class="mt-16 grid md:grid-cols-2 gap-8 max-w-5xl mx-auto animate-fadeIn">
         <div class="bg-white shadow-lg rounded-xl p-8 hover:shadow-xl transition">
             <h3 class="text-2xl font-semibold text-gray-800 mb-3">Our Mission</h3>
             <p class="text-gray-600">To offer high-quality food, exceptional service, and a memorable dining experience.</p>
@@ -97,25 +97,7 @@
 <script src='/assets/js/main.js'></script>
 
 <!-- Style -->
-<style>
-    body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(to bottom right, #ffffff, #ffb74d);
-    }
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    .fade-in {
-        animation: fadeInUp 1s ease-in-out forwards;
-    }
-</style>
+<link rel="stylesheet" href="../assets/css/custom.css">
 
 </body>
 </html>

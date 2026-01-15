@@ -14,10 +14,10 @@ unset($_SESSION['success'], $_SESSION['error']);
 <?php include __DIR__ . '/../includes/navbar.php'; ?>
 
 <!-- Contact Section -->
-<section class="pt-20 pb-24 px-6 md:px-0 fade-in">
+<section class="pt-20 pb-24 px-6 md:px-0">
     <div class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg mt-16">
         
-        <h1 class="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-6">Get In Touch</h1>
+        <h1 class="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-6 animate-fadeIn">Get In Touch</h1>
         <hr class="border-t-2 border-amber-400 w-24 mx-auto mb-8" />
 
         <br>
@@ -68,28 +68,10 @@ unset($_SESSION['success'], $_SESSION['error']);
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 
 <!-- Script -->
-<script src='/assets/js/main.js'></script>
+<script src='../assets/js/main.js'></script>
 
 <!-- Style -->
-<style>
-    body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(to bottom right, #ffffff, #ffb74d);
-    }
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    .fade-in {
-        animation: fadeInUp 1s ease-in-out forwards;
-    }
-</style>
+<link rel="stylesheet" href="../assets/css/custom.css">
 
 </body>
 </html>

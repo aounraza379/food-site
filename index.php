@@ -10,7 +10,7 @@
     <h2 class="text-4xl md:text-6xl font-semibold text-gray-800">
         Look like an <span class="text-amber-500 italic">expert</span><br/> right from the start
     </h2>
-    <p class="mt-4 text-lg text-gray-600">SINCE 1920</p>
+    <p class="mt-4 text-lg text-red-400">SINCE 1920</p>
 
     <div class="mt-6 flex gap-4">
         <a 

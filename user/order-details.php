@@ -51,4 +51,8 @@ $items = $conn->query("
     <p class="text-right font-bold text-lg">Total: $<?= number_format($o['total_price'],2) ?></p>
 </div>
 
+<!-- Script -->
+<script src="../assets/js/main.js"></script>
+
+<!-- Footer -->
 <?php include "../includes/footer.php"; ?>

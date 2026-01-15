@@ -1,9 +1,56 @@
-// Mobile menu toggle
-const menuBtn = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-menuBtn && menuBtn.addEventListener('click', () => {
-  mobileMenu.classList.toggle('hidden');
+document.addEventListener('DOMContentLoaded', () => {
+
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const userBtn = document.getElementById('user-btn');
+  const userMenu = document.getElementById('user-menu');
+
+  /* =========================
+     Mobile Menu
+  ========================== */
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  /* =========================
+     User Dropdown
+  ========================== */
+  if (userBtn && userMenu) {
+    userBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userMenu.classList.toggle('hidden');
+    });
+  }
+
+  /* =========================
+     Close on outside click
+  ========================== */
+  document.addEventListener('click', (e) => {
+
+    // Close mobile menu ONLY if click is outside
+    if (
+      mobileMenu &&
+      !mobileMenu.contains(e.target) &&
+      !menuBtn?.contains(e.target)
+    ) {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // Close user dropdown ONLY if click is outside
+    if (
+      userMenu &&
+      !userMenu.contains(e.target) &&
+      !userBtn?.contains(e.target)
+    ) {
+      userMenu.classList.add('hidden');
+    }
+  });
+
 });
+
 
 // 3D Slider
 (function () {

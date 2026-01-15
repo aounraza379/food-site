@@ -16,9 +16,9 @@
 
     <div class="min-w-[200px]">
       <ul class="space-y-2">
-        <li><a href="#" class="text-gray-400 hover:text-amber-500">Facebook</a></li>
-        <li><a href="#" class="text-gray-400 hover:text-amber-500">Instagram</a></li>
-        <li><a href="#" class="text-gray-400 hover:text-amber-500">Twitter</a></li>
+        <li><a href="https://www.instagram.com/aoun_1009/?hl=de" target="_blank" class="text-gray-400 hover:text-amber-500">Facebook</a></li>
+        <li><a href="https://www.instagram.com/aoun_1009/?hl=de" target="_blank" class="text-gray-400 hover:text-amber-500">Instagram</a></li>
+        <li><a href="https://www.instagram.com/aoun_1009/?hl=de" target="_blank" class="text-gray-400 hover:text-amber-500">Twitter</a></li>
       </ul>
     </div>
   </div>

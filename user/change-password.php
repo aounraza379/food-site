@@ -30,4 +30,8 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
 </form>
 </div>
 
+<!-- Script -->
+<script src="../assets/js/main.js"></script>
+
+<!-- Footer -->
 <?php include "../includes/footer.php"; ?>

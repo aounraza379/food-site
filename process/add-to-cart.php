@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['user'])) {
+    $_SESSION['redirect_after_login'] = $_SERVER['HTTP_REFERER'];
+    header("Location: /pages/login.php");
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];

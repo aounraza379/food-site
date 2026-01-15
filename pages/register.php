@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="min-h-screen flex items-start justify-center px-4 py-28">
   <div class="w-full max-w-2xl bg-white shadow-lg rounded-2xl p-10">
-    <h2 class="text-3xl font-bold text-gray-800 mb-3">Create your account</h2>
+    <h2 class="text-3xl font-bold text-gray-800 mb-3 animate-fadeIn">Create your account</h2>
     <p class="text-gray-600 mb-6">Sign up to save orders and manage your profile.</p>
 
     <?php if (!empty($errors)): ?>
@@ -104,4 +104,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 </div>
 
+<!-- Script -->
+<script src="../assets/js/main.js"></script>
+
+<!-- Style -->
+<link rel="stylesheet" href="../assets/css/custom.css">
+
+<!-- Footer -->
 <?php include __DIR__ . '/../includes/footer.php'; ?>

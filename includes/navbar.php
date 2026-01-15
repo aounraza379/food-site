@@ -127,24 +127,3 @@ if (session_status() === PHP_SESSION_NONE) session_start();
     <?php endif; ?>
   </div>
 </nav>
-
-<!-- <script>
-  // Menu toggle
-  document.getElementById('menu-btn')?.addEventListener('click', function() {
-    const m = document.getElementById('mobile-menu');
-    if (m) m.classList.toggle('hidden');
-  });
-
-  // User dropdown
-  document.getElementById('user-btn')?.addEventListener('click', function(e) {
-    e.stopPropagation();
-    const d = document.getElementById('user-menu');
-    if (d) d.classList.toggle('hidden');
-  });
-
-  // Close dropdown on outside click
-  document.addEventListener('click', function() {
-    const d = document.getElementById('user-menu');
-    if (d && !d.classList.contains('hidden')) d.classList.add('hidden');
-  });
-</script> -->

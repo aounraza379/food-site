@@ -31,4 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <a href="change-password.php" class="block mt-6 text-red-600">Change Password</a>
 </div>
 
+<!-- Script -->
+<script src="../assets/js/main.js"></script>
+
+<!-- Footer -->
 <?php include "../includes/footer.php"; ?>

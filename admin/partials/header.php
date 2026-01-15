@@ -6,7 +6,9 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 <head>
 <meta charset="UTF-8">
 <title>Admin Panel</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<link href="/styles/output.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 
 <body class="bg-gray-100">

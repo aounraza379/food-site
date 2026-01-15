@@ -25,6 +25,9 @@ if (!isset($_SESSION['user']) && !empty($_COOKIE['foodsite_remember'])) {
                 'email' => $u['email'],
                 'role' => $u['role']
             ];
+            
+            // Load user's cart from database
+            loadUserCartToSession($u['id'], $conn);
         }
     } else {
         setcookie('foodsite_remember', '', time() - 3600, '/');
@@ -32,7 +35,7 @@ if (!isset($_SESSION['user']) && !empty($_COOKIE['foodsite_remember'])) {
     $stmt->close();
 }
 
-// Already logged in?
+// Checks if already logged In
 if (isset($_SESSION['user'])) {
     header("Location: /index.php");
     exit;
@@ -67,6 +70,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'role' => $user['role']
                 ];
 
+                // ========== CART MIGRATION START ==========
+                // Migrate guest cart items to user's database cart
+                if (!empty($_SESSION['cart'])) {
+                    foreach ($_SESSION['cart'] as $food_id => $item) {
+                        // Check if item already exists in user's cart
+                        $checkStmt = $conn->prepare("SELECT id, quantity FROM cart WHERE user_id = ? AND food_id = ?");
+                        $checkStmt->bind_param("ii", $user['id'], $food_id);
+                        $checkStmt->execute();
+                        $checkResult = $checkStmt->get_result();
+                        
+                        if ($checkResult->num_rows > 0) {
+                            // Item exists, update quantity
+                            $existing = $checkResult->fetch_assoc();
+                            $newQuantity = $existing['quantity'] + $item['quantity'];
+                            
+                            $updateStmt = $conn->prepare("UPDATE cart SET quantity = ? WHERE user_id = ? AND food_id = ?");
+                            $updateStmt->bind_param("iii", $newQuantity, $user['id'], $food_id);
+                            $updateStmt->execute();
+                            $updateStmt->close();
+                        } else {
+                            // Item doesn't exist, insert new
+                            $insertStmt = $conn->prepare("INSERT INTO cart (user_id, food_id, quantity) VALUES (?, ?, ?)");
+                            $insertStmt->bind_param("iii", $user['id'], $food_id, $item['quantity']);
+                            $insertStmt->execute();
+                            $insertStmt->close();
+                        }
+                        $checkStmt->close();
+                    }
+                }
+                
+                // Always load user's cart from database (whether there was guest cart or not)
+                loadUserCartToSession($user['id'], $conn);
+                // ========== CART MIGRATION END ==========
+
                 if ($remember && $user['role'] !== 'admin') {
                     $raw_token = bin2hex(random_bytes(32));
                     $token_hash = hash('sha256', $raw_token);
@@ -84,8 +121,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $errors[] = "Admins must login from the admin panel.";
                     unset($_SESSION['user']);
                 } else {
-                    header("Location: /index.php");
-                    exit;
+                    if (isset($_SESSION['redirect_after_login'])) {
+                      $redirect = $_SESSION['redirect_after_login'];
+                      unset($_SESSION['redirect_after_login']);
+                      header("Location: $redirect");
+                  } else {
+                      header("Location: /index.php");
+                  }
+                  exit;
                 }
             } else {
                 $errors[] = "Invalid email or password.";
@@ -100,13 +143,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Pre-fill
 $prefill_email = $_POST['email'] ?? ($prefill_email ?? '');
 
+// Function to load user's cart from database to session
+function loadUserCartToSession($user_id, $conn) {
+    $loadStmt = $conn->prepare("SELECT c.food_id, c.quantity, fi.name, fi.price FROM cart c JOIN food_items fi ON c.food_id = fi.id WHERE c.user_id = ?");
+    $loadStmt->bind_param("i", $user_id);
+    $loadStmt->execute();
+    $loadResult = $loadStmt->get_result();
+    
+    // Initialize cart array
+    $_SESSION['cart'] = [];
+    
+    while ($row = $loadResult->fetch_assoc()) {
+        $_SESSION['cart'][$row['food_id']] = [
+            'name' => $row['name'],
+            'price' => $row['price'],
+            'quantity' => $row['quantity']
+        ];
+    }
+    $loadStmt->close();
+}
+
 include __DIR__ . '/../includes/header.php';
 include __DIR__ . '/../includes/navbar.php';
 ?>
 
 <div class="min-h-screen flex items-center justify-center px-4 py-16">
   <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-12">
-    <h2 class="text-4xl font-bold text-gray-800 mb-3">Welcome Back</h2>
+    <h2 class="text-4xl font-bold text-gray-800 mb-3 animate-fadeIn">Welcome Back</h2>
     <p class="text-gray-600 text-sm mb-6">Login to continue managing your orders</p>
 
     <?php if ($errors): ?>
@@ -145,4 +208,11 @@ include __DIR__ . '/../includes/navbar.php';
   </div>
 </div>
 
+<!-- Script -->
+<script src="../assets/js/main.js"></script>
+
+<!-- Style -->
+<link rel="stylesheet" href="../assets/css/custom.css">
+
+<!-- Footer -->
 <?php include __DIR__ . '/../includes/footer.php'; ?>

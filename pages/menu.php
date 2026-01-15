@@ -1,6 +1,7 @@
 <?php
 session_start();
 include __DIR__ . '/../config/db.php';
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
 ?>
 
 <!-- Header -->
@@ -13,15 +14,47 @@ include __DIR__ . '/../config/db.php';
 <section class="pt-28 pb-6 text-center fade-in">
     <h1 class="text-4xl font-semibold text-gray-800">Our Menu</h1>
     <p class="mt-2 text-gray-600">Taste the best food in town!</p>
+    
+    <!-- Search Bar -->
+    <section class="max-w-4xl mx-auto px-6 my-4">
+        <form method="GET" action="" class="flex gap-2">
+            <input 
+                type="search"
+                name="search"
+                placeholder="Search food items..."
+                value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>"
+                class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-amber-500"
+            >
+            <button 
+                type="submit"
+                class="bg-amber-500 hover:bg-amber-600 text-white px-6 rounded"
+            >
+                Search
+            </button>
+        </form>
+    </section>
+
 </section>
 
 <!-- Today's Specials -->
-<section class="px-6 md:px-0 max-w-6xl mx-auto mb-12 fade-in">
-    <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">🔥 Today's Specials</h2>
+<section class="px-6 md:px-0 max-w-6xl mx-auto mb-12 animate-fadeIn">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Today's Specials</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
         <?php
-        $specials = mysqli_query($conn, "SELECT * FROM food_items WHERE is_special=1 ORDER BY id ASC");
+        if ($search !== '') {
+            $stmt = $conn->prepare(
+                "SELECT * FROM food_items 
+                WHERE is_special = 1 AND (name LIKE ? OR description LIKE ?)"
+            );
+            $like = "%$search%";
+            $stmt->bind_param("ss", $like, $like);
+            $stmt->execute();
+            $specials = $stmt->get_result();
+        } else {
+            $specials = mysqli_query($conn, "SELECT * FROM food_items WHERE is_special=1 ORDER BY id ASC");
+        }
+
         if(mysqli_num_rows($specials) > 0):
             while($item = mysqli_fetch_assoc($specials)):
         ?>
@@ -54,7 +87,19 @@ include __DIR__ . '/../config/db.php';
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
         <?php
-        $regular = mysqli_query($conn, "SELECT * FROM food_items WHERE is_special=0 ORDER BY id ASC");
+        if ($search !== '') {
+            $stmt = $conn->prepare(
+                "SELECT * FROM food_items 
+                WHERE is_special = 0 AND (name LIKE ? OR description LIKE ?)"
+            );
+            $like = "%$search%";
+            $stmt->bind_param("ss", $like, $like);
+            $stmt->execute();
+            $regular = $stmt->get_result();
+        } else {
+            $regular = mysqli_query($conn, "SELECT * FROM food_items WHERE is_special=0 ORDER BY id ASC");
+        }
+
         if(mysqli_num_rows($regular) > 0):
             while($item = mysqli_fetch_assoc($regular)):
         ?>
@@ -85,28 +130,10 @@ include __DIR__ . '/../config/db.php';
 <?php include __DIR__ . '/../includes/footer.php'; ?>
 
 <!-- Style -->
-<style>
-    body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(to bottom right, #ffffff, #ffb74d);
-    }
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    .fade-in {
-        animation: fadeInUp 1s ease-in-out forwards;
-    }
-</style>
+<link rel="stylesheet" href="../assets/css/custom.css">
 
 <!-- Script -->
-<script src='/assets/js/main.js'></script>
+<script src='../assets/js/main.js'></script>
 
 </body>
 </html>

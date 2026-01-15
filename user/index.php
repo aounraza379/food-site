@@ -54,4 +54,8 @@ while ($o = $r->fetch_assoc()):
 </table>
 </div>
 
+<!-- Script -->
+<script src="../assets/js/main.js"></script>
+
+<!-- Footer -->
 <?php include "../includes/footer.php"; ?>
